@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manos de Esperanza - Hogar y Futuro para Niños</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 150px;
+            background: linear-gradient(to right, #ffcccb 50%, #add8e6 50%);
+            padding: 1rem;
+            color: white;
+            position: relative;
+        }
+        header img {
+            width: 180px;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #333;
+        }
+        header p {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        nav {
+            background: #333;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff6347;
+        }
+        section {
+            padding: 2rem;
+            margin: 2rem auto;
+            width: 80%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #ff6347;
+        }
+        p, ul, blockquote {
+            color: #555;
+            line-height: 1.6;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #333;
+            color: white;
+        }
+        form label {
+            display: block;
+            margin-top: 1rem;
+        }
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        form button {
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        form button:hover {
+            background-color: #ff4500;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background-color: #ff6347;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #ff4500;
+        }
+        .header-left {
+            position: relative;
+            width: 50%;
+            background: #ffcccb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+            transition: clip-path 0.3s ease-in-out;
+        }
+        .header-left:hover {
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+        }
+        .header-right {
+            position: relative;
+            width: 50%;
+            background: #add8e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+            transition: clip-path 0.3s ease-in-out;
+        }
+        .header-right:hover {
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .header-content {
+            text-align: center;
+            color: #333;
+        }
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        .header-content p {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+        .slideshow-slide {
+            display: none;
+            text-align: center;
+        }
+        .slideshow-slide img {
+           max-width: 100%;
+            max-height: 300px; /* Altura máxima de las imágenes */
+            border-radius: 8px;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .dot-container {
+            text-align: center;
+            padding: 1rem;
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="header-left">
+            <img src="C:\Users\jorge\OneDrive\Documents\Diseño_Web\Index_ONG\Imagenes\LOGO.png" alt="Logo Orfanato Esperanza">
+        </div>
+        <div class="header-right">
+            <div class="header-content">
+                <h1>Manos de Esperanza</h1>
+                <p>Un Hogar Lleno de Amor y Futuro</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="file:///C:/Users/jorge/OneDrive/Documents/Dise%C3%B1o_Web/Index_ONG/nosotros.html">Nosotros</a></li>
+            <li><a href="file:///C:/Users/jorge/OneDrive/Documents/Dise%C3%B1o_Web/Index_ONG/donaciones_alianzas.html">Donaciones y Alianzass</a></li>
+            <li><a href="file:///C:/Users/jorge/OneDrive/Documents/Dise%C3%B1o_Web/Index_ONG/contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio">
+        <h2>Bienvenidos a Orfanato Manos de Esperanza</h2>
+        <p>En Orfanato Esperanza, trabajamos cada día para ofrecer un hogar lleno de amor y seguridad a niños y niñas en situación de vulnerabilidad. Únete a nosotros para darles una mejor oportunidad en la vida.</p>
+        
+        <!-- Slideshow -->
+        <div class="slideshow-container">
+            <div class="slideshow-slide">
+                <img src="https://static9.depositphotos.com/1594308/1112/i/450/depositphotos_11127128-stock-photo-happy-friends.jpg" alt="Imagen 1">
+            </div>
+            <div class="slideshow-slide">
+                <img src="https://www.bayardeducacion.com/wp-content/uploads/2021/02/13873-educar-a-ninos-y-ninas-por-igual-2.jpg.webp" alt="Imagen 2">
+            </div>
+            <div class="slideshow-slide">
+                <img src="https://images.ecestaticos.com/yyolT6A_ODvx_2FVW3KiLdTJBAI=/0x147:2116x1260/600x315/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fc52%2F8d0%2Ffb2%2Fc528d0fb2b7750b66688b6dba828d6c9.jpg" alt="Imagen 3">
+            </div>
+             <div class="slideshow-slide">
+                <img src="https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/nina-feliz.jpg.webp?itok=G7ZPt1QO" alt="Imagen 1">
+            </div
+            <!-- Controles anteriores/siguientes -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <!-- Puntos indicadores -->
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros">
+        <h2>Sobre Nosotros</h2>
+        <p>Fundada en 2005, la ONG Orfanato Esperanza se dedica a proporcionar un entorno seguro y enriquecedor para niños huérfanos y abandonados. Nos esforzamos por cubrir todas sus necesidades básicas, educativas y emocionales, asegurando que crezcan en un ambiente lleno de cariño y comprensión.</p>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios">
+        <h2>Nuestros Servicios</h2>
+        <ul>
+            <li>Albergue seguro y acogedor</li>
+            <li>Programas educativos y recreativos</li>
+            <li>Asistencia médica y psicológica</li>
+            <li>Programas de adopción y acogimiento</li>
+            <li>Capacitación para la vida independiente</li>
+        </ul>
+    </section>
+
+    <!-- Sección Testimonios -->
+    <section id="testimonios">
+        <h2>Testimonios</h2>
+        <article>
+            <blockquote>
+                "Gracias a Orfanato Esperanza, he encontrado una nueva familia y un lugar donde me siento amado y protegido." - Juan, 10 años.
+            </blockquote>
+        </article>
+        <article>
+            <blockquote>
+                "El apoyo y la educación que reciben los niños aquí es increíble. Estoy agradecida por la oportunidad de ser parte de este proyecto." - María, Voluntaria.
+            </blockquote>
+        </article>
+    </section>
+
+ 
+
+    <footer>
+        <p>&copy; 2024 Orfanato Esperanza. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.querySelectorAll(".slideshow-slide");
+            let dots = document.querySelectorAll(".dot");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 5000); // Cambia la imagen cada 5 segundos
+        }
+
+        function plusSlides(n) {
+            slideIndex += n - 1;
+            showSlides();
+        }
+
+        function currentSlide(n) {
+            slideIndex = n - 1;
+            showSlides();
+        }
+    </script>
+</body>
+</html>
+

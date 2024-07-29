@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - Orfanato Esperanza</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+        body {
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #e3f2fd;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #ff80ab 50%, #80deea 50%);
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            background: #ff80ab;
+            padding: 0.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background 1s;
+        }
+        nav.scrolled {
+            background: #333;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #80deea;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-top: 6rem;
+        }
+        h1, h2 {
+            color: #ff4081;
+        }
+        h2 {
+            border-bottom: 2px solid #ff4081;
+            padding-bottom: 0.5rem;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .media {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .media img, .media video {
+            border: 3px solid #80deea;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            margin: 1rem 0;
+            transition: transform 0.3s;
+        }
+        .media img:hover, .media video:hover {
+            transform: scale(1.05);
+        }
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .team-member {
+            background: #fff;
+            border: 3px solid #80deea;
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            width: 300px;
+            transition: box-shadow 0.3s;
+        }
+        .team-member:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .testimonials {
+            background: #fff;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial {
+            margin-bottom: 1rem;
+            font-style: italic;
+            position: relative;
+            padding-left: 2rem;
+        }
+        .testimonial:before {
+            content: "“";
+            font-size: 2rem;
+            color: #ff80ab;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            background: linear-gradient(90deg, #ff80ab 50%, #80deea 50%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #ff4081 50%, #4fc3f7 50%);
+        }
+        footer {
+            background: #80deea;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .header-img {
+            max-width: 100%;
+            height: auto;
+        }
+        .illustration {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Manos de Esperanza" class="header-img">
+    <h1>Manos de Esperanza</h1>
+</header>
+
+<nav id="navbar">
+    <ul>
+        <li><a href="file:///C:/Users/jorge/OneDrive/Documents/Dise%C3%B1o_Web/Index_ONG/index_ONG.html">Inicio</a></li>
+        <li><a href="#galeria">Nosotros</a></li>
+        <li><a href="file:///C:/Users/jorge/OneDrive/Documents/Dise%C3%B1o_Web/Index_ONG/donaciones_alianzas.html">Donaciones y Alianzas</a></li>
+        <li><a href="file:///C:/Users/jorge/OneDrive/Documents/Dise%C3%B1o_Web/Index_ONG/contacto.html">Contacto</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <section id="historia">
+        <h2>Nuestra Historia</h2>
+        <img src="C:\Users\jorge\OneDrive\Documents\Diseño_Web\Index_ONG\Imagenes\LOGO.png" alt="Ilustración de historia" class="illustration">
+        <p>Bienvenido a la página "Sobre Nosotros" del Orfanato Esperanza. Desde nuestros humildes comienzos en 2005, hemos brindado un hogar seguro y cariñoso a cientos de niños necesitados. Nuestra misión es proporcionar cuidado, educación y amor a cada niño que llega a nosotros.</p>
+        <p>En el Orfanato Esperanza, creemos que cada niño merece un ambiente donde pueda crecer y desarrollarse plenamente. A lo largo de los años, hemos implementado numerosos programas educativos y recreativos para apoyar el desarrollo integral de nuestros niños.</p>
+    </section>
+
+    <section id="galeria" class="media">
+        <h2>Galería</h2>
+        <img src="https://cdnuploads.aa.com.tr/uploads/Contents/2019/04/23/thumbs_b_c_165245535c97a0420f8ca3bdff7629ed.jpg?v=181100" alt="Imagen del orfanato 1">
+        <img src="https://www.unicef.org/uruguay/sites/unicef.org.uruguay/files/styles/two_column/public/UN0231462%20AYUDA%20A%20LOS%20NI%C3%91OS_0.jpg.webp?itok=3A66jPUh" alt="Imagen del orfanato 2">
+        <img src="https://unicit.edu.ni/wp-content/uploads/2017/10/entrega-juguetes-a-ni%C3%B1os-abandonados.jpg" alt="Imagen del orfanato 3">
+        <img src="https://diariopresenterm.blob.core.windows.net.optimalcdn.com/images/2020/02/14/cropw812h406lindas1-focus-0-0-732-549.jpg" alt="Imagen del orfanato 3">
+        <video controls>
+            <source src="C:\Users\jorge\OneDrive\Documents\Diseño_Web\Index_ONG\videos\El Orfanato es un video Animado que te hará derramar Lágrimas.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+        <video controls>
+            <source src="video2.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+    </section>
+
+    <section id="equipo">
+        <h2>Nuestro Equipo</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="director.jpg" alt="Director del orfanato">
+                <h3>Ana Martínez</h3>
+                <p>Directora</p>
+                <p>Ana es la directora de nuestro orfanato, con más de 15 años de experiencia en trabajo social y cuidado infantil.</p>
+            </div>
+            <div class="team-member">
+                <img src="coordinador.jpg" alt="Coordinador del orfanato">
+                <h3>Juan Rodríguez</h3>
+                <p>Coordinador de Actividades</p>
+                <p>Juan organiza todas las actividades recreativas y educativas para los niños, asegurando un ambiente estimulante y divertido.</p>
+            </div>
+            <div class="team-member">
+                <img src="enfermera.jpg" alt="Enfermera del orfanato">
+                <h3>María López</h3>
+                <p>Enfermera</p>
+                <p>María cuida de la salud y el bienestar de todos los niños, proporcionando atención médica y apoyo emocional.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios" class="testimonials">
+        <h2>Testimonios</h2>
+        <div class="testimonial">
+            <p>"El Orfanato Esperanza ha sido un verdadero hogar para mí. Gracias a ellos, he tenido la oportunidad de estudiar y alcanzar mis sueños." - Pedro Gómez</p>
+        </div>
+        <div class="testimonial">
+            <p>"Estoy muy agradecida por el amor y cuidado que mi hijo ha recibido en este orfanato. Realmente se preocupan por el bienestar de cada niño." - Laura Ramírez</p>
+        </div>
+        <a href="#contacto" class="btn">Contáctanos</a>
+    </section>
+</div>
+
+<footer id="contacto">
+    <p>Orfanato Esperanza - Dirección: Calle Falsa 123, Ciudad, País | Teléfono: (123) 456-7890 | Correo electrónico: contacto@orfanatoesperanza.org</p>
+    <p>&copy; 2024 Orfanato Esperanza. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    window.addEventListener('scroll', function() {
+        var navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
+
+</body>
+</html>

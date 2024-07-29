@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donaciones y Alianzas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #007BFF;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            width: 80%;
+            margin: 2rem auto;
+            overflow: hidden;
+        }
+        .content h2 {
+            color: #007BFF;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 0.5rem;
+        }
+        form {
+            background: #fff;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        form.show {
+            opacity: 1;
+        }
+        form div {
+            margin-bottom: 1rem;
+        }
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="number"],
+        form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        form button:hover {
+            background: #0056b3;
+        }
+        .hidden {
+            display: none;
+        }
+        .error {
+            color: red;
+            font-size: 0.9rem;
+        }
+        .confirmation {
+            text-align: center;
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .confirmation.show {
+            display: block;
+            opacity: 1;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .btn-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+        }
+        .btn-top:hover {
+            background: #0056b3;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            color: #007BFF;
+            margin-left: 5px;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -100px; /* Use half of the width to center the tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%; /* At the bottom of the tooltip */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #007BFF transparent transparent transparent;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .progress {
+            width: 0;
+            height: 5px;
+            background: #007BFF;
+            transition: width 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Donaciones y Alianzas</h1>
+        <nav>
+            <ul>
+                <li><a href="file:///C:/Users/jorge/OneDrive/Documents/Dise%C3%B1o_Web/Index_ONG/index_ONG.html">Inicio</a></li>
+                <li><a href="file:///C:/Users/jorge/OneDrive/Documents/Dise%C3%B1o_Web/Index_ONG/nosotros.html">Nosotros</a></li>
+                <li><a href="#donaciones">Donaciones y Alianzas</a></li>
+                <li><a href="file:///C:/Users/jorge/OneDrive/Documents/Dise%C3%B1o_Web/Index_ONG/contacto.html">contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="donaciones" class="content">
+            <h2>Donaciones</h2>
+            <p>Tu apoyo es fundamental para nosotros. Puedes hacer una donación utilizando el siguiente formulario:</p>
+            <form id="donationForm" action="/submit_donation" method="post">
+                <div>
+                    <label for="name">Nombre:
+                        <span class="tooltip"><i class="fa fa-info-circle"></i>
+                            <span class="tooltiptext">Por favor, ingresa tu nombre completo.</span>
+                        </span>
+                    </label>
+                    <input type="text" id="name" name="name" required>
+                    <span id="nameError" class="error hidden">Por favor, ingrese su nombre.</span>
+                </div>
+                <div>
+                    <label for="email">Correo Electrónico:
+                        <span class="tooltip"><i class="fa fa-info-circle"></i>
+                            <span class="tooltiptext">Por favor, ingresa un correo electrónico válido.</span>
+                        </span>
+                    </label>
+                    <input type="email" id="email" name="email" required>
+                    <span id="emailError" class="error hidden">Por favor, ingrese un correo electrónico válido.</span>
+                </div>
+                <div>
+                    <label for="amount">Monto de la Donación:
+                        <span class="tooltip"><i class="fa fa-info-circle"></i>
+                            <span class="tooltiptext">Ingrese el monto en dólares.</span>
+                        </span>
+                    </label>
+                    <input type="number" id="amount" name="amount" required>
+                    <span id="amountError" class="error hidden">Por favor, ingrese un monto válido.</span>
+                </div>
+                <div class="progress" id="donationProgress"></div>
+                <button type="submit">Donar</button>
+            </form>
+            <div id="donationConfirmation" class="confirmation">
+                <h3>¡Gracias por tu donación!</h3>
+                <p>Tu apoyo es muy importante para nosotros.</p>
+            </div>
+        </section>
+
+        <section id="alianzas" class="content">
+            <h2>Alianzas</h2>
+            <p>Estamos abiertos a formar alianzas con organizaciones e individuos. Si estás interesado, por favor llena el siguiente formulario:</p>
+            <form id="partnershipForm" action="/submit_partnership" method="post">
+                <div>
+                    <label for="org_name">Nombre de la Organización:
+                        <span class="tooltip"><i class="fa fa-info-circle"></i>
+                            <span class="tooltiptext">Ingrese el nombre completo de la organización.</span>
+                        </span>
+                    </label>
+                    <input type="text" id="org_name" name="org_name" required>
+                    <span id="orgNameError" class="error hidden">Por favor, ingrese el nombre de la organización.</span>
+                </div>
+                <div>
+                    <label for="contact_person">Persona de Contacto:
+                        <span class="tooltip"><i class="fa fa-info-circle"></i>
+                            <span class="tooltiptext">Ingrese el nombre completo de la persona de contacto.</span>
+                        </span>
+                    </label>
+                    <input type="text" id="contact_person" name="contact_person" required>
+                    <span id="contactPersonError" class="error hidden">Por favor, ingrese el nombre de la persona de contacto.</span>
+                </div>
+                <div>
+                    <label for="contact_email">Correo Electrónico:
+                        <span class="tooltip"><i class="fa fa-info-circle"></i>
+                            <span class="tooltiptext">Ingrese un correo electrónico válido.</span>
+                        </span>
+                    </label>
+                    <input type="email" id="contact_email" name="contact_email" required>
+                    <span id="contactEmailError" class="error hidden">Por favor, ingrese un correo electrónico válido.</span>
+                </div>
+                <div>
+                    <label for="message">Mensaje:
+                        <span class="tooltip"><i class="fa fa-info-circle"></i>
+                            <span class="tooltiptext">Describa brevemente su propuesta de alianza.</span>
+                        </span>
+                    </label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <span id="messageError" class="error hidden">Por favor, ingrese un mensaje.</span>
+                </div>
+                <div class="progress" id="partnershipProgress"></div>
+                <button type="submit">Enviar</button>
+            </form>
+            <div id="partnershipConfirmation" class="confirmation">
+                <h3>¡Gracias por tu interés en formar una alianza!</h3>
+                <p>Nos pondremos en contacto contigo pronto.</p>
+            </div>
+        </section>
+    </div>
+
+    <button class="btn-top" onclick="scrollToTop()"><i class="fa fa-arrow-up"></i></button>
+
+    <footer>
+        <p>&copy; 2024 Tu Organización. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Scroll to top button functionality
+        const btnTop = document.querySelector('.btn-top');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btnTop.style.display = "block";
+            } else {
+                btnTop.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Form validation and submission handling
+        document.getElementById('donationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let valid = true;
+
+            // Name validation
+            const name = document.getElementById('name');
+            if (name.value.trim() === '') {
+                valid = false;
+                document.getElementById('nameError').classList.remove('hidden');
+            } else {
+                document.getElementById('nameError').classList.add('hidden');
+            }
+
+            // Email validation
+            const email = document.getElementById('email');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value)) {
+                valid = false;
+                document.getElementById('emailError').classList.remove('hidden');
+            } else {
+                document.getElementById('emailError').classList.add('hidden');
+            }
+
+            // Amount validation
+            const amount = document.getElementById('amount');
+            if (amount.value <= 0) {
+                valid = false;
+                document.getElementById('amountError').classList.remove('hidden');
+            } else {
+                document.getElementById('amountError').classList.add('hidden');
+            }
+
+            if (valid) {
+                document.getElementById('donationForm').classList.remove('show');
+                document.getElementById('donationProgress').style.width = '100%';
+                setTimeout(() => {
+                    document.getElementById('donationForm').reset();
+                    document.getElementById('donationProgress').style.width = '0';
+                    document.getElementById('donationConfirmation').classList.add('show');
+                }, 1000);
+            }
+        });
+
+        document.getElementById('partnershipForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let valid = true;
+
+            // Organization name validation
+            const orgName = document.getElementById('org_name');
+            if (orgName.value.trim() === '') {
+                valid = false;
+                document.getElementById('orgNameError').classList.remove('hidden');
+            } else {
+                document.getElementById('orgNameError').classList.add('hidden');
+            }
+
+            // Contact person validation
+            const contactPerson = document.getElementById('contact_person');
+            if (contactPerson.value.trim() === '') {
+                valid = false;
+                document.getElementById('contactPersonError').classList.remove('hidden');
+            } else {
+                document.getElementById('contactPersonError').classList.add('hidden');
+            }
+
+            // Contact email validation
+            const contactEmail = document.getElementById('contact_email');
+            const contactEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!contactEmailPattern.test(contactEmail.value)) {
+                valid = false;
+                document.getElementById('contactEmailError').classList.remove('hidden');
+            } else {
+                document.getElementById('contactEmailError').classList.add('hidden');
+            }
+
+            // Message validation
+            const message = document.getElementById('message');
+            if (message.value.trim() === '') {
+                valid = false;
+                document.getElementById('messageError').classList.remove('hidden');
+            } else {
+                document.getElementById('messageError').classList.add('hidden');
+            }
+
+            if (valid) {
+                document.getElementById('partnershipForm').classList.remove('show');
+                document.getElementById('partnershipProgress').style.width = '100%';
+                setTimeout(() => {
+                    document.getElementById('partnershipForm').reset();
+                    document.getElementById('partnershipProgress').style.width = '0';
+                    document.getElementById('partnershipConfirmation').classList.add('show');
+                }, 1000);
+            }
+        });
+
+        // Show forms with animation
+        document.querySelectorAll('form').forEach(form => {
+            setTimeout(() => form.classList.add('show'), 500);
+        });
+    </script>
+</body>
+</html>
